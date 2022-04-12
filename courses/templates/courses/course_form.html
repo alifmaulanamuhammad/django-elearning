@@ -1,0 +1,25 @@
+{% extends 'courses/course_base.html' %} {% load bootstrap4 %} {% block title_name %} SullivanCode {% endblock title_name %} {% block main_content %}
+
+<h1>Create new Course</h1>
+
+{% if user_type == 2 %}
+<div class="container mt-">
+  <form action="{% url 'courses:create' %}" method="POST">
+  {% csrf_token %} {% bootstrap_form form %}
+  <input type="submit" value="Create" class="btn btn-success btn-lg" />
+</form>
+</div>
+
+{% else %}
+<div class="jumbotron">
+  <h2>Oops! You need to be Teacher to access this page.</h2>
+</div>
+{%if filename%}
+  <div style="margin:10px auto;">
+    <video autoplay="autoplay" controls="controls" preload="preload">
+      <source src="{{ MEDIA_URL }}/{{ filename }}" type="video/mp4" ></source>
+    </video>
+  </div>
+{% endif %}
+{% endif %}
+ {% endblock main_content %}

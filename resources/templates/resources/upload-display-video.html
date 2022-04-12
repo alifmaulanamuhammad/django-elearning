@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block title%}
+
+{%endblock title%}
+
+{%block body_content%}
+<div class="container">
+	<h3 class="text-center mb-3 text-dark">Video Today</h3>
+	{%for x in video%}
+	<h3 class="text-center mt-2 mb-2">{{ x.capition }}</h3>
+	<video class="embed-responsive embed-responsive-16by9" controls="controls">
+          <source src="{{x.video.url }}" type="video/mp4" />
+        </video>
+	{%endfor%}
+</div>
+<div class="container">
+	<div class="col-md-6">
+		<form action="/file-upload" class="dropzone rounded mb-4">
+    		<div class="fallback">
+        		<input name="file" type="file" multiple />
+    		</div>
+		</form>
+	</div>
+</div>
+{%endblock body_content%}
